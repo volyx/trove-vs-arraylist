@@ -15,7 +15,7 @@ public class TroveVsArrayList {
 
     @Benchmark
     public void troveLong() {
-        TLongArrayList longs = new TLongArrayList();
+        TLongArrayList longs = new TLongArrayList(MAX);
         for (long i = 0; i < MAX; i++) {
             longs.add(i);
         }
@@ -23,9 +23,17 @@ public class TroveVsArrayList {
 
     @Benchmark
     public void arrayList() {
-        ArrayList<Long> longs = new ArrayList<>();
+        ArrayList<Long> longs = new ArrayList<>(MAX);
         for (long i = 0; i < MAX; i++) {
             longs.add(i);
+        }
+    }
+
+    @Benchmark
+    public void array() {
+        long[] longs = new long[MAX];
+        for (long i = 0; i < MAX; i++) {
+            longs[(int) i] = i;
         }
     }
 
